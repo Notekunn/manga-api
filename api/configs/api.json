@@ -1,0 +1,29 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Manga API Document",
+        "version": "1.0.0",
+        "contact": {
+            "name": "Trần Đức Cường",
+            "url": "https://www.facebook.com/ShiinDz",
+            "email": "clonebmn2itt@gmail.com"
+        },
+        "termsOfService": "http://swagger.io/terms/",
+        "x-logo": {
+            "url": "https://i.imgur.com/XambEVe.png",
+            "backgroundColor": "#0033A0"
+        },
+        "description": "# Giới thiệu\nApi dùng cho app đọc truyện tranh."
+    },
+    "servers": [
+        {
+            "url": "https://manga-api.herokuapp.com",
+            "description": "Live Server"
+        },
+        {
+            "url": "http://localhost:8000",
+            "description": "Sandbox Server"
+        }
+    ],
+    "paths": {}
+}
