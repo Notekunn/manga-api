@@ -36,5 +36,15 @@ const UserSchema = new Schema({
         default: Date.now
     }
 });
-
+UserSchema.methods.isAuthority = function (permission) {
+    const permissionLevel = {
+        admin: 0,
+        moderator: 1,
+        translator: 2,
+        member: 3
+    }
+    const tLevel = permissionLevel[this.permission], needLevel = permissionLevel[permission];
+    if (!tLevel || !needLevel) return false;
+    return tLevel <= needLevel;
+}
 module.exports = mongoose.model('User', UserSchema)
