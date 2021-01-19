@@ -3,7 +3,7 @@ const utils = require('../utils');
 
 exports.getAll = async function (req, res, next) {
     try {
-        const artists = await Artist.find({}).select(['-__v']).sort({ name: 1 }).exec();
+        const artists = await Artist.find({}).sort({ name: 1 }).exec();
         res.status(200).send({
             data: artists
         })
@@ -31,7 +31,7 @@ exports.create = async function (req, res, next) {
 }
 exports.get = async function (req, res, next) {
     try {
-        const artist = await Artist.findById(req.params.id).select(['-__v']).sort({ name: 1 }).exec();
+        const artist = await Artist.findById(req.params.id).exec();
         if (!artist) {
             throw new Error('Không tìm thấy tác giả');
         }
@@ -42,7 +42,7 @@ exports.get = async function (req, res, next) {
 }
 exports.getBySlug = async function (req, res, next) {
     try {
-        const artist = await Artist.find({ slug: req.params.slug }).select(['-__v']).sort({ name: 1 }).exec();
+        const artist = await Artist.find({ slug: req.params.slug }).exec();
         if (!artist) {
             throw new Error('Không tìm thấy tác giả');
         }

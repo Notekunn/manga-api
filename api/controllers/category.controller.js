@@ -3,7 +3,7 @@ const utils = require('../utils');
 
 exports.getAll = async function (req, res, next) {
     try {
-        const categories = await Category.find({}).select(['-__v']).sort({ name: 1 }).exec();
+        const categories = await Category.find({}).sort({ title: 1 }).exec();
         res.status(200).send({
             data: categories
         })
@@ -29,7 +29,7 @@ exports.create = async function (req, res, next) {
 }
 exports.get = async function (req, res, next) {
     try {
-        const category = await Category.findById(req.params.id).select(['-__v']).sort({ name: 1 }).exec();
+        const category = await Category.findById(req.params.id).exec();
         if (!category) {
             throw new Error('Không tìm thấy thể loại');
         }
@@ -40,7 +40,7 @@ exports.get = async function (req, res, next) {
 }
 exports.getBySlug = async function (req, res, next) {
     try {
-        const category = await Category.findOne({ slug: req.params.slug }).select(['-__v']).sort({ name: 1 }).exec();
+        const category = await Category.findOne({ slug: req.params.slug }).exec();
         if (!category) {
             throw new Error('Không tìm thấy thể loại');
         }

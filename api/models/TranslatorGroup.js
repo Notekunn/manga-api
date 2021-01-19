@@ -25,4 +25,4 @@ const TranslatorGroupSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('TranslatorGroup', TranslatorGroupSchema)
+module.exports = mongoose.model('TranslatorGroup', TranslatorGroupSchema, 'translator_groups')
