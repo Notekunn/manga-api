@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const userRouter = require('./api/routes/user.route');
 const artistRouter = require('./api/routes/artist.route');
+const categoryRouter = require('./api/routes/category.route');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 app.use(express.json());
@@ -15,6 +16,7 @@ app.get("/", function (req, res) {
 });
 app.use("/users", userRouter);
 app.use("/artists", artistRouter);
+app.use("/categories", categoryRouter);
 
 app.use(function (req, res, next) {
     const error = new Error("Not found");

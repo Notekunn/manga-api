@@ -15,7 +15,7 @@ exports.getAll = async function (req, res, next) {
 exports.create = async function (req, res, next) {
     try {
         const { name, about, avatarUrl } = req.body;
-        const slug = await utils.generateSlug(Artist, req.body.name, null);
+        const slug = await utils.generateSlug(Artist, name, null);
         const artist = new Artist({
             name,
             slug,
@@ -32,6 +32,17 @@ exports.create = async function (req, res, next) {
 exports.get = async function (req, res, next) {
     try {
         const artist = await Artist.findById(req.params.id).select(['-__v']).sort({ name: 1 }).exec();
+        if (!artist) {
+            throw new Error('Không tìm thấy tác giả');
+        }
+        res.status(200).send(artist)
+    } catch (error) {
+        next(error);
+    }
+}
+exports.getBySlug = async function (req, res, next) {
+    try {
+        const artist = await Artist.find({ slug: req.params.slug }).select(['-__v']).sort({ name: 1 }).exec();
         if (!artist) {
             throw new Error('Không tìm thấy tác giả');
         }
