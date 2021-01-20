@@ -5,6 +5,7 @@ const artistRoute = require('./api/routes/artist.route');
 const categoryRoute = require('./api/routes/category.route');
 const translatorGroupRoute = require('./api/routes/translator-group.route');
 const mangaRoute = require('./api/routes/manga.route');
+const chapterRoute = require('./api/routes/chapter.route');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 app.use(express.json());
@@ -21,6 +22,7 @@ app.use("/artists", artistRoute);
 app.use("/categories", categoryRoute);
 app.use("/translator-groups", translatorGroupRoute);
 app.use("/mangas", mangaRoute);
+app.use("/chapters", chapterRoute);
 
 
 app.use(function (req, res, next) {

@@ -28,7 +28,7 @@ const ChapterSchema = new Schema({
         required: true,
         default: 0
     },
-    lastUpdate: {
+    lastUpdated: {
         type: Date,
         default: Date.now
     },

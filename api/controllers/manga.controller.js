@@ -3,8 +3,8 @@ const utils = require('../utils');
 exports.getAll = async function (req, res, next) {
     try {
         const mangas = await Manga.find({})
-        .populate(['artists', 'groups', 'categories'])
-        .sort({ lastUpdated: 1 }).exec();
+            .populate(['artists', 'groups', 'categories'])
+            .sort({ lastUpdated: 1 }).exec();
         res.send({
             data: mangas
         })
@@ -15,12 +15,12 @@ exports.getAll = async function (req, res, next) {
 
 exports.create = async function (req, res, next) {
     try {
-        const { name, otherName, description, status, coverUrl, releasedYear, artists, categories } = req.body;
+        const { name, otherName, description, status, coverUrl, releasedYear, artists, categories, groups } = req.body;
         const slug = await utils.generateSlug(Manga, name, null);
         const manga = new Manga({
             name, slug, otherName, description,
             status, coverUrl, releasedYear, artists,
-            categories
+            categories, groups
         });
         await manga.save();
         res.send(manga)
