@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
 const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 const UserSchema = new Schema({
@@ -47,4 +48,7 @@ UserSchema.methods.isAuthority = function (permission) {
     if (!tLevel || !needLevel) return false;
     return tLevel <= needLevel;
 }
+UserSchema.methods.comparePassword = function (password) {
+    return bcrypt.compareSync(password, this.password);
+};
 module.exports = mongoose.model('User', UserSchema)

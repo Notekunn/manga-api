@@ -7,7 +7,7 @@ Api for app manga
 - [ ] Viết api document [Redoc](https://github.com/Redocly/redoc)
 
 ### Actor: Anonymous
-- [ ] Đăng nhập - Đăng xuất
+- [x] Đăng nhập - Đăng xuất
 - [ ] Đọc truyện
 
 ### Actor: Member

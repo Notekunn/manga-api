@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const controller = require('../controllers/manga.controller');
+const checkAuth = require('../middlewares/check-auth');
 router.get('/', controller.getAll)
-    .post('/', controller.create)
+    .post('/', checkAuth, controller.create)
 module.exports = router;
