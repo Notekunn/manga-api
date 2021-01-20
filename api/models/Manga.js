@@ -17,7 +17,13 @@ const MangaSchema = new Schema({
     },
     status: {
         type: String,
-        required: true
+        enum: [
+            'Đã hoàn thành',
+            'Đang tiến hành',
+            'Tạm ngưng',
+            'Đã hủy'
+        ],
+        default: 'Đang tiến hành'
     },
     coverUrl: {
         type: String

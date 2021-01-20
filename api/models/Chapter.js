@@ -30,8 +30,11 @@ const ChapterSchema = new Schema({
     },
     lastUpdate: {
         type: Date,
-        required: true
-    }
+        default: Date.now
+    },
+    content: [{
+        type: String
+    }]
 });
 
 module.exports = mongoose.model('Chapter', ChapterSchema);
